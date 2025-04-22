@@ -6,6 +6,7 @@ from langchain_community.document_loaders import UnstructuredMarkdownLoader
 from langchain.text_splitter import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 from openai import OpenAI
 from typing import List
+from prompt import PROMPT
 
 
 def chunk_text(path: str, chunk_size: int=512, chunk_overlap: int=50) -> List[str]:
@@ -90,18 +91,11 @@ def get_chatgpt_response(client: OpenAI, query: str, context: List[str]) -> str:
     context_text = "\n\n".join(context)
     
     # Create a prompt for GPT-4o
-    prompt = f"""
-    You are a helpful assistant that answers questions based on the provided context.
-    
-    Context:
-    {context_text}
-    
-    Question: {query}
-    
-    Answer the question based solely on the provided context. If the context doesn't contain 
-    the information needed to answer the question, say "I don't have enough information to 
-    answer that question based on the available context."
-    """
+    prompt = PROMPT.format(
+        context=context_text,
+        query=query
+    )
+   
     
     # Call the OpenAI API
     response = client.chat.completions.create(
@@ -168,7 +162,7 @@ if __name__ == "__main__":
         if collection.count() == 0:
             print("Loading text data and creating embeddings...")
             
-            chunks = chunk_text("data/02_chapter2.md")
+            chunks = chunk_text("data/complete_text.md")
             collection = add_documents_to_collection(collection, chunks)
         else:
             print(f"Collection already has {collection.count()} documents.")

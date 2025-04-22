@@ -27,3 +27,6 @@ chromadb/
 # python version
 .python-version
 
+# ruff
+.ruff_cache/
+

@@ -1,0 +1,22 @@
+# OpenAI API configuration
+openai:
+  api_key: ${OPENAI_API_KEY}  # This will be loaded from environment variable
+  embedding_model: "text-embedding-3-large"
+  completion_model: "gpt-4o"
+  temperature: 0.3
+
+# ChromaDB configuration
+chromadb:
+  persist_directory: "chromadb"
+  collection_name: "recipes_for_science"
+
+# Document processing configuration
+document_processing:
+  markdown_files:
+    - "data/complete_text.md"
+  chunk_size: 512
+  chunk_overlap: 50
+
+# Query configuration
+query:
+  default_n_results: 5
