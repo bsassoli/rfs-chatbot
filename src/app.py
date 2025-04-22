@@ -10,7 +10,7 @@ from langchain.text_splitter import (
 )
 from openai import OpenAI
 from typing import List, Dict, Any
-from prompt import PROMPT
+from config.prompt import PROMPT
 
 
 def load_config(config_path: str) -> Dict[str, Any]:
@@ -22,7 +22,7 @@ def load_config(config_path: str) -> Dict[str, Any]:
     return config
 
 
-def chunk_text(config: Dict[str, any]) -> List[str]:
+def chunk_text(config: Dict[str, Any]) -> List[str]:
     """
     Splits the text into chunks of specified size with a specified overlap.
     """
@@ -158,7 +158,7 @@ def chat_with_knowledge_base(
 
         # Get response from completion model
         print("Retrieving relevant information...")
-        response = get_chatgpt_response(client, user_query, documents)
+        response = get_chatgpt_response(config, client, user_query, documents)
 
         # Print the response
         print("\nAnswer:", response)
