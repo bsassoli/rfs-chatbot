@@ -10,5 +10,6 @@ dependencies = [
     "langchain-community>=0.3.21",
     "langsmith>=0.3.33",
     "openai>=1.75.0",
+    "pytest>=8.3.5",
     "python-dotenv>=1.1.0",
 ]
