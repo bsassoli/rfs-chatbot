@@ -1,6 +1,7 @@
 # RFS Chatbot: Recipes for Science Knowledge Assistant
 
 A ground-up implementation of a Retrieval-Augmented Generation (RAG) chatbot without relying on any heavyweight frameworks. This chatbot is specifically designed to answer questions about the "Recipes for Science" textbook.
+
 ## Overview
 
 This project demonstrates how to build a simple but effective RAG-based conversational AI system. It uses:
@@ -45,6 +46,7 @@ cp .env.example .env
 # Edit .env to add your OpenAI API key
 ```
 ## Usage
+
 ### Running the Chatbot
 
 ```bash
@@ -57,14 +59,13 @@ python src/app.py
 - Start an interactive chat session
 
 ### Evaluation
+
 To evaluate the chatbot's performance:
 ```bash
 python tests/eval.py
 ```
 
 This will run a series of test questions and evaluate the responses for:
-
-
 
 * Faithfulness to the source material
 * Relevancy to the question
@@ -73,33 +74,11 @@ This will run a series of test questions and evaluate the responses for:
 ### Configuration
 
 The chatbot's behavior can be customized through the config/config.yaml file:
-### Project Structure
 
-rfs-chatbot/
-  ├── config/              # Configuration files
-  │   ├── config.yaml      # Main configuration 
-  │   └── prompt.py        # Prompt template
-  ├── src/                 # Source code
-  │   └── app.py           # Main application
-  ├── tests/               # Evaluation code
-  │   ├── eval.py          # Evaluation framework
-  │   └── test_questions.py# Test questions and answers
-  ├── data/                # Data directory
-  │   └── complete_text.md # Source textbook (not included)
-  ├── chromadb/            # Vector database (generated)
-  ├── .env                 # Environment variables
-  ├── .gitignore           # Git ignore file
-  ├── README.md            # This file
-  └── requirements.txt     # Python dependencies
-
-#### **Future Improvements**
+## **Future Improvements**
 
 * Web interface for easier interaction
 * Multi-document support for expanded knowledge base
 * Conversation history and context management
 * Response citation and source tracking
 * Streaming responses for better UX
-
-### License
-
-MIT License
